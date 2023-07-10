@@ -13,6 +13,6 @@ public class TextAnalyzerController {
     }
     @GetMapping
     public String getText(){
-        return "Символ - " + textAnalyzerService.findUniqueCharacter();
+        return textAnalyzerService.findUniqueCharacter();
     }
 }

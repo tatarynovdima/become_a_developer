@@ -32,7 +32,6 @@ public class TextAnalyzerServiceImpl implements TextAnalyzerService{
                 return entry.getKey().toString().toLowerCase();
             }
         }
-
         return null;
     }
 
