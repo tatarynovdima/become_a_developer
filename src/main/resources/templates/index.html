@@ -23,15 +23,44 @@
             width: 120px;
             height: 35px;
         }
+
+        .result {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Text Analyzer</h1>
-    <form action="/api/analyzer" method="POST">
-        <textarea rows="5" cols="30"></textarea>
-        <button class="btn-analyze" type="submit">Analyze</button>
+    <form id="analyze-form">
+        <textarea id="text-input" rows="5" cols="30"></textarea>
     </form>
+    <button id="analyze-btn" class="btn-analyze" type="button">Analyze</button>
+    <div id="result" class="result"></div>
 </div>
+
+<script>
+    document.getElementById("analyze-btn").addEventListener("click", function() {
+        var text = document.getElementById("text-input").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/analyze", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var response = xhr.responseText;
+                    var resultDiv = document.getElementById("result");
+                    resultDiv.textContent = "Unique character: " + response;
+                } else {
+                    console.error("Request failed. Status: " + xhr.status);
+                }
+            }
+        };
+        var data = JSON.stringify({text: text});
+        xhr.send(data);
+    });
+</script>
+
+
 </body>
 </html>
