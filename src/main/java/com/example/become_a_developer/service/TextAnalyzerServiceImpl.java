@@ -34,6 +34,4 @@ public class TextAnalyzerServiceImpl implements TextAnalyzerService{
         }
         return null;
     }
-
-
 }

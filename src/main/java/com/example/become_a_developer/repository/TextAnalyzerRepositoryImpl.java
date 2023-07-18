@@ -3,8 +3,6 @@ package com.example.become_a_developer.repository;
 
 import org.springframework.stereotype.Repository;
 
-import org.springframework.stereotype.Repository;
-
 @Repository
 public class TextAnalyzerRepositoryImpl implements TextAnalyzerRepository {
     private String text;
